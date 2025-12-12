@@ -1,0 +1,196 @@
+[gd_scene load_steps=11 format=4 uid="uid://2smx5lr7rlhi"]
+
+[ext_resource type="Texture2D" uid="uid://76j0b36ubool" path="res://backgrounds/Sprite_Sheet.png" id="1_w4e0d"]
+[ext_resource type="Texture2D" uid="uid://cc7k46p5pku84" path="res://backgrounds/BG_03/Layers/Sky.png" id="2_w4e0d"]
+[ext_resource type="Texture2D" uid="uid://bxvauf61uxg7m" path="res://backgrounds/BG_03/Layers/BG.png" id="3_2xjew"]
+[ext_resource type="Texture2D" uid="uid://c4ye4ixeavq2d" path="res://backgrounds/BG_03/Layers/Middle.png" id="4_hj2br"]
+[ext_resource type="Texture2D" uid="uid://b8lj61s6uj2pt" path="res://backgrounds/BG_03/Layers/Foreground.png" id="5_tao1e"]
+[ext_resource type="Texture2D" uid="uid://bx6lfe4jmd3t3" path="res://backgrounds/BG_03/Layers/Ground_01.png" id="6_u2mlt"]
+[ext_resource type="Texture2D" uid="uid://dmg7nut1ofo6w" path="res://backgrounds/BG_03/Layers/Ground_02.png" id="7_hl0r8"]
+[ext_resource type="Texture2D" uid="uid://dl24i3egs8wy0" path="res://backgrounds/BG_03/Layers/Snow.png" id="8_qcxj6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4k6p7"]
+texture = ExtResource("1_w4e0d")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+11:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+16:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+7:1/0 = 0
+10:1/0 = 0
+13:1/0 = 0
+16:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+7:3/0 = 0
+10:3/0 = 0
+13:3/0 = 0
+16:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+16:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+16:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+16:6/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_r7iew"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_4k6p7")
+
+[node name="Parallax" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
+position = Vector2(0, 352)
+tile_map_data = PackedByteArray("AAAAAAsAAAALAAAAAAABAAsAAAALAAAAAAACAAsAAAALAAAAAAADAAsAAAALAAAAAAAEAAsAAAALAAAAAAAFAAsAAAALAAAAAAAGAAsAAAALAAAAAAAHAAsAAAALAAAAAAAIAAsAAAALAAAAAAAJAAsAAAALAAAAAAAKAAsAAAALAAAAAAALAAsAAAALAAAAAAAMAAsAAAALAAAAAAANAAsAAAALAAAAAAAOAAsAAAALAAAAAAAPAAsAAAALAAAAAAAQAAsAAAALAAAAAAARAAsAAAALAAAAAAASAAsAAAALAAAAAAATAAsAAAALAAAAAAAUAAsAAAALAAAAAAAVAAsAAAALAAAAAAAWAAsAAAALAAAAAAAXAAsAAAALAAAAAAAYAAsAAAALAAAAAAAZAAsAAAALAAAAAAAaAAsAAAALAAAAAAAbAAsAAAALAAAAAAAcAAsAAAALAAAAAAAdAAsAAAALAAAAAAAeAAsAAAALAAAAAAAfAAsAAAALAAAAAAAgAAsAAAALAAAAAAAhAAsAAAALAAAAAAAiAAsAAAALAAAAAAAjAAsAAAALAAAAAAAkAAsAAAALAAAAAAAlAAsAAAALAAAAAAAmAAsAAAALAAAAAAAnAAsAAAALAAAAAAAoAAsAAAALAAAAAAApAAsAAAALAAAAAAAqAAsAAAALAAAAAAArAAsAAAALAAAAAAAsAAsAAAALAAAAAAAtAAsAAAALAAAAAAAuAAsAAAALAAAAAAAvAAsAAAALAAAAAAAwAAsAAAALAAAAAAAxAAsAAAALAAAAAAAyAAsAAAALAAAAAAA=")
+tile_set = SubResource("TileSet_r7iew")
+
+[node name="Parallax" type="Node2D" parent="."]
+
+[node name="Sky" type="Parallax2D" parent="Parallax"]
+z_index = -20
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(1920, 0)
+repeat_times = 20
+limit_begin = Vector2(0, -10000000)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax/Sky"]
+z_index = -20
+texture = ExtResource("2_w4e0d")
+
+[node name="BG" type="Parallax2D" parent="Parallax"]
+z_index = -19
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(1920, 0)
+repeat_times = 20
+limit_begin = Vector2(0, -10000000)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax/BG"]
+z_index = -20
+texture = ExtResource("3_2xjew")
+
+[node name="Middle" type="Parallax2D" parent="Parallax"]
+scroll_scale = Vector2(0.4, 0.4)
+repeat_size = Vector2(1920, 0)
+repeat_times = 20
+limit_begin = Vector2(0, -10000000)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax/Middle"]
+z_index = -20
+texture = ExtResource("4_hj2br")
+
+[node name="Foreground" type="Parallax2D" parent="Parallax"]
+scroll_scale = Vector2(0.6, 0.6)
+repeat_size = Vector2(1920, 0)
+repeat_times = 20
+limit_begin = Vector2(0, -10000000)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax/Foreground"]
+z_index = -20
+texture = ExtResource("5_tao1e")
+
+[node name="Ground_1" type="Parallax2D" parent="Parallax"]
+scroll_scale = Vector2(0.8, 0.8)
+repeat_size = Vector2(1920, 0)
+repeat_times = 20
+limit_begin = Vector2(0, -10000000)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax/Ground_1"]
+z_index = -20
+texture = ExtResource("6_u2mlt")
+
+[node name="Ground_2" type="Parallax2D" parent="Parallax"]
+repeat_size = Vector2(1920, 0)
+repeat_times = 20
+limit_begin = Vector2(0, -10000000)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax/Ground_2"]
+z_index = -20
+texture = ExtResource("7_hl0r8")
+
+[node name="Snow" type="Parallax2D" parent="Parallax"]
+scroll_scale = Vector2(1.2, 1.2)
+repeat_size = Vector2(1920, 0)
+repeat_times = 20
+limit_begin = Vector2(0, -10000000)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax/Snow"]
+z_index = -20
+texture = ExtResource("8_qcxj6")
