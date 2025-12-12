@@ -1,0 +1,139 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfavyw7ngvtmm"]
+
+[ext_resource type="Texture2D" uid="uid://637xtgjugnyx" path="res://tile/kenney_16x16 2.png" id="1_a5ocn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w76t7"]
+size = Vector2(448.54077, 50)
+
+[sub_resource type="Curve2D" id="Curve2D_a5ocn"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -65.28418, -642, 0, 0, 0, 0, -70.66052, 105, 0, 0, 0, 0, -67.588326, 107)
+}
+point_count = 3
+
+[sub_resource type="Animation" id="Animation_a5ocn"]
+resource_name = "Plataformas"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer:speed_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.03]
+}
+
+[sub_resource type="Animation" id="Animation_88sid"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer:speed_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.03]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_88sid"]
+_data = {
+&"Plataformas": SubResource("Animation_a5ocn"),
+&"RESET": SubResource("Animation_88sid")
+}
+
+[node name="Plataformas" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(-86.04897, -90.82374)
+scale = Vector2(1.302, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-79.38124, -352.5691)
+scale = Vector2(6.9715223, 3.6904762)
+texture = ExtResource("1_a5ocn")
+region_enabled = true
+region_rect = Rect2(0.58999634, 1592.308, 65, 21.140015)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-81.4372, -353.04507)
+shape = SubResource("RectangleShape2D_w76t7")
+disabled = true
+debug_color = Color(0.60065114, 0, 0.23474398, 0.41960785)
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(4, 9)
+scale = Vector2(1.302, 1)
+curve = SubResource("Curve2D_a5ocn")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-67.58833, 107.000015)
+progress = 750.686
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D"]
+z_as_relative = false
+position = Vector2(0.024, 0.045)
+remote_path = NodePath("../../../CharacterBody2D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_88sid")
+}
+speed_scale = 1.03
+movie_quit_on_finish = true
