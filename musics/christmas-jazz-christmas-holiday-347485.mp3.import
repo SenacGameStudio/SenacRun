@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/christmas-jazz-christmas-holiday-347485.mp3-1
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/christmas-silent-street-439890.mp3-4aebfe24b7
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
