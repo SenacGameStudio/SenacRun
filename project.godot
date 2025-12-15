@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 window/size/mode=2
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+Hurtbox=""
+
 [layer_names]
 
 2d_physics/layer_1="Player"
