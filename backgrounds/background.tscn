@@ -72,6 +72,7 @@ z_index = -20
 texture = ExtResource("7_hl0r8")
 
 [node name="Snow" type="Parallax2D" parent="."]
+visible = false
 scroll_scale = Vector2(1.2, 1.2)
 repeat_size = Vector2(1920, 0)
 repeat_times = 20
