@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://nws10gc2j6sc"]
+[gd_scene load_steps=10 format=3 uid="uid://nws10gc2j6sc"]
 
 [ext_resource type="Script" uid="uid://ma4kycnka24m" path="res://scripts/galinhacaipira_2d.gd" id="1_baqo5"]
 [ext_resource type="Texture2D" uid="uid://brq7ejhomxlf4" path="res://sprite/chicken.png" id="1_y01ko"]
@@ -47,7 +47,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="galinhacaipira" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ka20y"]
+size = Vector2(23, 23.5)
+
+[node name="galinhacaipira" type="CharacterBody2D" groups=["Player"]]
+collision_mask = 127
 script = ExtResource("1_baqo5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -57,3 +61,11 @@ shape = SubResource("RectangleShape2D_baqo5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_u54bp")
 animation = &"andando"
+
+[node name="portal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal"]
+position = Vector2(0, 1.75)
+shape = SubResource("RectangleShape2D_ka20y")
+
+[connection signal="area_entered" from="portal" to="." method="_on_portal_area_entered"]
