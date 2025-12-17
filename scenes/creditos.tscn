@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjotrr7em6qcv"]
+
+[ext_resource type="Script" uid="uid://jq33ki0cpi3v" path="res://scripts/creditos.gd" id="1_spoww"]
+[ext_resource type="AudioStream" uid="uid://d4ba4cpymt4mn" path="res://musics/christmas-jazz-christmas-holiday-347485.mp3" id="2_6yhot"]
+[ext_resource type="PackedScene" uid="uid://cwrdw3le4k6ea" path="res://backgrounds/snow.tscn" id="2_jddgq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6yhot"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="ScrollContainer" type="ScrollContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6yhot")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+script = ExtResource("1_spoww")
+tempo_rolagem = 53.5
+
+[node name="snow" parent="." instance=ExtResource("2_jddgq")]
+position = Vector2(523, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+z_index = 2
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]
+[color=#F0B000][font_size=50][b]SENAC RUN[/b][/font_size][/color]
+
+[center]
+
+[font_size=35][b]Daniella Maurink[/b][/font_size]
+[font_size=25]Game Designer[/font_size]
+
+[font_size=35][b]João Francisco[/b][/font_size]
+[font_size=25]Player Developer[/font_size]
+
+[font_size=35][b]João Eduardo[/b][/font_size]
+[font_size=25]Enemy Developer[/font_size]
+
+[font_size=35][b]Jaiane Avinte[/b][/font_size]
+[font_size=25]Platforms Developer[/font_size]
+
+[font_size=35][b]Carmen Sousa[/b][/font_size]
+[font_size=25]Sounds[/font_size]
+
+[font_size=35][b]Pedro Sousa[/b][/font_size]
+[font_size=25]Level Effects[/font_size]
+
+[font_size=35][b]Maria Domingas[/b][/font_size]
+[font_size=25]Analista[/font_size]
+
+[font_size=35][b]Patrick Macedo[/b][/font_size]
+[font_size=25]Professor[/font_size]
+
+[center]
+
+
+[font_size=25]Copyright 2025 Todos os direitos reservados[/font_size]
+[/center]"
+fit_content = true
+
+[node name="MusicaCreditos" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6yhot")

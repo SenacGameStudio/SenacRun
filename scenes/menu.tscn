@@ -1,0 +1,88 @@
+[gd_scene load_steps=11 format=3 uid="uid://c57j5abj6t1uw"]
+
+[ext_resource type="Script" uid="uid://b033vp1pwv8wb" path="res://scripts/menu.gd" id="1_hui5t"]
+[ext_resource type="Texture2D" uid="uid://bhan3ehk8y006" path="res://tiles/menu_principal.png" id="2_70mvr"]
+[ext_resource type="PackedScene" uid="uid://cwrdw3le4k6ea" path="res://backgrounds/snow.tscn" id="2_mhnvy"]
+[ext_resource type="AudioStream" uid="uid://c1470o2w1tfgm" path="res://musics/christmas-silent-street-439890.mp3" id="2_ue86l"]
+
+[sub_resource type="Theme" id="Theme_ed2ws"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70mvr"]
+bg_color = Color(1, 0.8352941, 0.14509805, 1)
+
+[sub_resource type="Theme" id="Theme_5ny0o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3as4"]
+bg_color = Color(1, 0.8352941, 0.14509805, 1)
+
+[sub_resource type="Theme" id="Theme_nyke1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ye7jd"]
+bg_color = Color(1, 0.8352941, 0.14509805, 1)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hui5t")
+
+[node name="snow" parent="." instance=ExtResource("2_mhnvy")]
+z_index = 2
+position = Vector2(549, 0)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer"]
+position = Vector2(568.50006, 317.00003)
+scale = Vector2(0.61510426, 0.62037045)
+texture = ExtResource("2_70mvr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 466.0
+offset_top = -216.0
+offset_right = 680.0
+offset_bottom = -115.0
+grow_vertical = 0
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../SairButton")
+theme = SubResource("Theme_ed2ws")
+theme_override_colors/font_color = Color(0.08466994, 0, 0.004055044, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_70mvr")
+text = "Start"
+
+[node name="CreditosButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_5ny0o")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_i3as4")
+text = "Creditos"
+
+[node name="SairButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../StartButton")
+theme = SubResource("Theme_nyke1")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ye7jd")
+text = "Sair"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ue86l")
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditosButton" to="." method="_on_creditos_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SairButton" to="." method="_on_sair_button_pressed"]
