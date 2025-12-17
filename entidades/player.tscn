@@ -212,7 +212,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11m8g"]
 size = Vector2(25.5, 36)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 127
 script = ExtResource("1_rxhda")
 
@@ -225,6 +225,8 @@ position = Vector2(0, 4)
 scale = Vector2(1.0625, 1.09375)
 sprite_frames = SubResource("SpriteFrames_8kf02")
 animation = &"shot"
+frame = 1
+frame_progress = 1.0
 
 [node name="Hitbox" type="Area2D" parent="."]
 
@@ -234,3 +236,6 @@ shape = SubResource("RectangleShape2D_11m8g")
 debug_color = Color(0.9268805, 3.994852e-05, 0.67265934, 0.41960785)
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Mira" type="Marker2D" parent="."]
+position = Vector2(9, 3)

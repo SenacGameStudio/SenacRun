@@ -1,5 +1,11 @@
 extends CharacterBody2D
 
+var bola_neve = preload("res://entidades/bola_neve_new.tscn") # Adicionado preload da bola de neve
+@onready var mira: Marker2D = $Mira # Adicionado Mira
+var mira_posicao
+const GRAVITY = 1000
+
+
 @onready var anima: AnimatedSprite2D = $animacao_player
 @onready var hitbox: Area2D = $Hitbox
 @onready var respawn_timer: Timer = $Timer
@@ -33,15 +39,19 @@ enum State {
 	run,
 	fall,
 	ground,
-	hit
+	hit,
+	shot # última acao criada
 }
 
 var state_player: State
 
 func _ready() -> void:
+	mira_posicao = mira.position
 	anima_parado()
 
 func _physics_process(delta: float) -> void:
+	_atualizar_mira()
+
 	match state_player:
 		State.idle:
 			estado_parado(delta)
@@ -53,6 +63,8 @@ func _physics_process(delta: float) -> void:
 			estado_pulando(delta)
 		State.hit:
 			estado_morto(delta)
+		State.shot:
+			estado_shot(delta)
 
 	move_and_slide()
 
@@ -75,6 +87,10 @@ func anima_pulando():
 func anima_caindo():
 	state_player = State.fall
 	anima.play("fall")
+
+func anima_shot():
+	state_player = State.shot
+	anima.play("shot")
 
 func anima_morto():
 	if state_player == State.hit:
@@ -110,6 +126,10 @@ func estado_parado(delta):
 	if Input.is_action_just_pressed("pulo"):
 		anima_pulando()
 		return
+	
+	if Input.is_action_just_pressed("atirar"): # novo estado
+		anima_shot()
+		return
 
 func estado_caindo(delta):
 	ativar_gravidade(delta)
@@ -127,6 +147,10 @@ func estado_caindo(delta):
 			anima_correndo()
 		return
 
+	if Input.is_action_just_pressed("atirar"): # novo estado
+		anima_shot()
+		return
+
 func estado_pulando(delta):
 	ativar_gravidade(delta)
 	mover(delta)
@@ -136,10 +160,12 @@ func estado_pulando(delta):
 		if Input.is_action_just_pressed("pulo") and can_jump():
 			anima_pulando()
 			return
+	 
 	else:
 		if Input.is_action_just_released("pulo") or is_on_ceiling():
 			velocity.y *= 0.5
 
+	
 	if velocity.y > 0:
 		anima_caindo()
 		return
@@ -160,6 +186,10 @@ func estado_correndo(delta):
 	if Input.is_action_just_pressed("pulo"):
 		anima_pulando()
 		return
+
+	if Input.is_action_just_pressed("atirar"): # novo estado
+		anima_shot()
+		return
 	
 	if not is_on_floor():
 		jump_count += 1
@@ -179,6 +209,29 @@ func estado_morto(delta):
 			get_tree().reload_current_scene()
 	pass
 
+
+func estado_shot(_delta):
+	atualizar_direcao()
+
+	if direction != 0 and Input.is_action_just_pressed("atirar"):
+		var tiro = bola_neve.instantiate() as Node2D
+		tiro.direction = self.direction
+		tiro.global_position = mira.global_position
+		get_parent().add_child(tiro)
+		anima_shot()
+	else:
+		if velocity.x == 0:
+			anima_parado()
+		elif velocity.x != 0:
+			anima_correndo()
+		
+
+func _atualizar_mira():
+	if direction > 0:
+		mira.position.x = mira_posicao.x
+	elif direction < 0:
+		mira.position.x = - mira_posicao.x
+
 func mover(delta):
 	atualizar_direcao()
 
@@ -191,6 +244,7 @@ func mover(delta):
 		velocity.x = move_toward(velocity.x, direction * max_speed, acceleration * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, deceleration * delta)
+
 
 func ativar_gravidade(delta):
 	if not is_on_floor():
