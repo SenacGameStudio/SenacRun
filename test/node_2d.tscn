@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://bc7yw5w5repem"]
 
-[ext_resource type="PackedScene" uid="uid://bkr1u8kd72e5b" path="res://entidades/player.tscn" id="1_aqf5u"]
+[ext_resource type="PackedScene" uid="uid://bkr1u8kd72e5b" path="res://entidades/player_novo.tscn" id="1_aqf5u"]
 [ext_resource type="Texture2D" uid="uid://ip1fsvn6xe5x" path="res://test/brick_tiles_1.png" id="2_n41pv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vb6mf"]
