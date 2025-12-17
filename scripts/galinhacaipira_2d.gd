@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -300.0
 
 
 func _physics_process(delta: float) -> void:
@@ -23,3 +23,18 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+
+func teleport(area: Area2D) -> void:
+	for portal in get_tree().get_nodes_in_group("portal"):
+		if portal != area and portal.portal_id == area.portal_id:
+			if not portal.portal_is_locked:
+				area.lock_portal()
+				global_position = portal.global_position
+		
+		
+		
+
+func _on_portal_area_entered(area: Area2D) -> void:
+	if area.is_in_group("portal") and not area.portal_is_locked:
+		teleport(area)
