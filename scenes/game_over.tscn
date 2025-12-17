@@ -32,7 +32,7 @@ scale = Vector2(0.61588544, 0.61944443)
 texture = ExtResource("1_xeevv")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 14.254999999999999
+wait_time = 14.255
 one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
