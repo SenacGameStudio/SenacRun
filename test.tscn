@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://bfp2k5esmtvob"]
+[gd_scene load_steps=5 format=4 uid="uid://bfp2k5esmtvob"]
 
 [ext_resource type="PackedScene" uid="uid://beuv4giesaltr" path="res://entidades/pinguim.tscn" id="1_37kl0"]
 [ext_resource type="Texture2D" uid="uid://btb5yro4powg" path="res://tiles/mellowautotiles.png" id="2_8uh7m"]
-[ext_resource type="PackedScene" uid="uid://bm8rvk3bd4ae8" path="res://entidades/player.tscn" id="4_ykrsh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6uqi0"]
 texture = ExtResource("2_8uh7m")
@@ -77,7 +76,3 @@ tile_set = SubResource("TileSet_ppyta")
 
 [node name="pinguim" parent="." instance=ExtResource("1_37kl0")]
 position = Vector2(254, 613)
-
-[node name="player" parent="." instance=ExtResource("4_ykrsh")]
-position = Vector2(218, 548)
-collision_mask = 6
