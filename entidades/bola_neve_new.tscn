@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7ytq8bqjqmli"]
+
+[ext_resource type="Texture2D" uid="uid://dod6b7cw4y6bf" path="res://sprites/personagem/bola de neve.png" id="1_8jht0"]
+[ext_resource type="Script" uid="uid://dk2bpgbbw488h" path="res://scripts/bola_neve_new.gd" id="2_4oscg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oscg"]
+atlas = ExtResource("1_8jht0")
+region = Rect2(0, 0, 82, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_48yny"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oscg")
+}],
+"loop": true,
+"name": &"tiro",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k4ll6"]
+radius = 40.04997
+
+[node name="BolaNeveNew" type="AnimatedSprite2D"]
+scale = Vector2(0.10000001, 0.1)
+sprite_frames = SubResource("SpriteFrames_48yny")
+animation = &"tiro"
+frame_progress = 0.41469592
+script = ExtResource("2_4oscg")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_k4ll6")
+debug_color = Color(0.9255152, 0.05354245, 0.65618116, 0.41960785)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

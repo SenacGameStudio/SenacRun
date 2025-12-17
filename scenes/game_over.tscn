@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmlylt0iy7bk3"]
+
+[ext_resource type="Script" uid="uid://bbx8lu6v44ny4" path="res://scripts/game_over.gd" id="1_tbwuq"]
+[ext_resource type="Texture2D" uid="uid://chapx8s7ydpic" path="res://tiles/game_over.png" id="1_xeevv"]
+[ext_resource type="PackedScene" uid="uid://cwrdw3le4k6ea" path="res://backgrounds/snow.tscn" id="2_racf3"]
+[ext_resource type="AudioStream" uid="uid://c1470o2w1tfgm" path="res://musics/christmas-silent-street-439890.mp3" id="2_wqhvx"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tbwuq")
+
+[node name="snow" parent="." instance=ExtResource("2_racf3")]
+z_index = 2
+position = Vector2(564, 3)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer"]
+position = Vector2(578.75, 321.5)
+scale = Vector2(0.61588544, 0.61944443)
+texture = ExtResource("1_xeevv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 14.254999999999999
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_wqhvx")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
