@@ -227,6 +227,7 @@ sprite_frames = SubResource("SpriteFrames_8kf02")
 animation = &"shot"
 
 [node name="Hitbox" type="Area2D" parent="."]
+z_index = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-2.25, 3)

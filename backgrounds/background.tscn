@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dl24i3egs8wy0" path="res://backgrounds/BG_03/Layers/Snow.png" id="8_qcxj6"]
 
 [node name="Parallax" type="Node2D"]
+position = Vector2(6, 288)
+scale = Vector2(0.80280566, 0.80280566)
 
 [node name="Sky" type="Parallax2D" parent="."]
 z_index = -20

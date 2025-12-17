@@ -3,11 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://637xtgjugnyx" path="res://tile/kenney_16x16 2.png" id="1_v32lv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qsl8o"]
-size = Vector2(348.8352, 64.85101)
+size = Vector2(191.80383, 22)
 
 [sub_resource type="Curve2D" id="Curve2D_qsl8o"]
 _data = {
-"points": PackedVector2Array(-14.800507, -44.40152, 14.800507, 44.40152, 500, 17, 0, 0, 0, 0, 1880.9872, 31.999998)
+"points": PackedVector2Array(87.77304, -7.2751884, -87.77304, 7.2751884, 500, 17, 0, 0, 0, 0, 1322.4365, 10.999999)
 }
 point_count = 2
 
@@ -63,9 +63,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(3.0314324, 1),
+"transitions": PackedFloat32Array(0.61557233, 2.2973967),
 "update": 0,
-"values": [0.0, 1.0]
+"values": [0.0, 0.731]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kuss7"]
@@ -79,34 +79,36 @@ light_mask = 8
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 z_index = 2
-position = Vector2(209.64893, -10)
+position = Vector2(568.63544, -1.5147896)
 scale = Vector2(0.49529782, 1)
 collision_layer = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(-543.4176, -18.249992)
-scale = Vector2(4.4817996, 5.0555553)
+position = Vector2(6.1035156e-05, -1)
+scale = Vector2(3.1290514, 3.055556)
 texture = ExtResource("1_v32lv")
 region_enabled = true
 region_rect = Rect2(1.8649902, 1342.371, 64.997345, 9)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-558.4176, -15.574493)
+position = Vector2(2.018982, -1)
+scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_qsl8o")
 debug_color = Color(0.88437957, 0.24047583, 0.5868258, 0.41960785)
 
 [node name="Path2D" type="Path2D" parent="."]
-position = Vector2(-37.999992, -27)
+position = Vector2(42.000004, -16)
 scale = Vector2(0.49529782, 1)
 curve = SubResource("Curve2D_qsl8o")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(1880.9873, 32.000004)
-progress = 1383.6305
+position = Vector2(1322.4364, 11.000002)
+progress = 833.6626
 rotates = false
 loop = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D"]
+position = Vector2(-2.0189877, 0)
 remote_path = NodePath("../../../CharacterBody2D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
