@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://c57j5abj6t1uw"]
 
 [ext_resource type="Script" uid="uid://b033vp1pwv8wb" path="res://scripts/menu.gd" id="1_hui5t"]
-[ext_resource type="Texture2D" uid="uid://bhan3ehk8y006" path="res://tiles/menu_principal.png" id="2_70mvr"]
 [ext_resource type="PackedScene" uid="uid://cwrdw3le4k6ea" path="res://backgrounds/snow.tscn" id="2_mhnvy"]
 [ext_resource type="AudioStream" uid="uid://c1470o2w1tfgm" path="res://musics/christmas-silent-street-439890.mp3" id="2_ue86l"]
+[ext_resource type="Texture2D" uid="uid://ccsst10m6f86a" path="res://tiles/main_menu.jpg" id="3_mhnvy"]
 
 [sub_resource type="Theme" id="Theme_ed2ws"]
 
@@ -28,6 +28,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hui5t")
+metadata/_edit_horizontal_guides_ = [648.0, 0.0]
+metadata/_edit_vertical_guides_ = [1152.0, 0.0]
 
 [node name="snow" parent="." instance=ExtResource("2_mhnvy")]
 z_index = 2
@@ -42,20 +44,21 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="PanelContainer"]
-position = Vector2(568.50006, 317.00003)
-scale = Vector2(0.61510426, 0.62037045)
-texture = ExtResource("2_70mvr")
+position = Vector2(582, 208)
+scale = Vector2(1.1720865, 1.1821214)
+texture = ExtResource("3_mhnvy")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 466.0
-offset_top = -216.0
-offset_right = 680.0
-offset_bottom = -115.0
-grow_vertical = 0
+offset_left = 841.0
+offset_top = 335.0
+offset_right = 31.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2

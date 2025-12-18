@@ -4,7 +4,7 @@ var alvo: Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	buscar_alvo() # Replace with function body.
+	buscar_alvo()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -15,6 +15,5 @@ func buscar_alvo():
 	if nodes.size() == 0:
 		push_error("no player nao foi encontrado")
 		return
-		
 		
 	alvo = nodes[0]

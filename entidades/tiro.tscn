@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl01m7rkfrdls"]
+
+[ext_resource type="Texture2D" uid="uid://dod6b7cw4y6bf" path="res://sprites/personagem/bola de neve.png" id="1_1uwtj"]
+[ext_resource type="Script" uid="uid://b02tpl8j1fqag" path="res://scripts/tiro.gd" id="2_80wgy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_80wgy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1uwtj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Tiro" type="AnimatedSprite2D" groups=["Tiro"]]
+z_index = 10
+scale = Vector2(0.04565589, 0.04565589)
+sprite_frames = SubResource("SpriteFrames_80wgy")
+script = ExtResource("2_80wgy")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 9.282
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

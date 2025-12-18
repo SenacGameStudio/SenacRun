@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=3 uid="uid://dr0vada6gupy7"]
+
+[ext_resource type="Texture2D" uid="uid://duxbnb3jros1c" path="res://sprites/penguin.png" id="1_1t4qc"]
+[ext_resource type="Script" uid="uid://v6nxwgyqdl2q" path="res://scripts/enemies/inimigo.gd" id="1_66r0u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66r0u"]
+size = Vector2(17, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3jv3"]
+atlas = ExtResource("1_1t4qc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob8jc"]
+atlas = ExtResource("1_1t4qc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3oto"]
+atlas = ExtResource("1_1t4qc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rd1ub"]
+atlas = ExtResource("1_1t4qc")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k5ogj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3jv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob8jc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3oto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rd1ub")
+}],
+"loop": true,
+"name": &"andando",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1t4qc"]
+size = Vector2(17, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3jv3"]
+size = Vector2(5, 1)
+
+[node name="Inimigo" type="CharacterBody2D" groups=["Inimigos"]]
+script = ExtResource("1_66r0u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_66r0u")
+
+[node name="AnimacaoInimigo" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_k5ogj")
+animation = &"andando"
+frame_progress = 0.25971434
+
+[node name="DetectorParede" type="RayCast2D" parent="."]
+target_position = Vector2(28, 0)
+collision_mask = 4
+
+[node name="Hitbox" type="Area2D" parent="." groups=["Hitbox"]]
+collision_layer = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_1t4qc")
+debug_color = Color(0.7766817, 0.31027395, 0.78758, 0.41960785)
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["Hurtbox"]]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-0.5, -8.5)
+shape = SubResource("RectangleShape2D_x3jv3")
+debug_color = Color(0.94700915, 3.5616756e-06, 0.587436, 0.41960785)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 8.401
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
